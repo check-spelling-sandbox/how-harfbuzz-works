@@ -220,7 +220,7 @@ So, with no shaper list:
 
 That is the whole of “why `ot` always wins”. It isn’t a rule written anywhere: it is the position of one line in a list, and a create function that can’t fail.
 
-It also means the presence of a table decides nothing unless the backend for it is compiled in. Here is the font HarfBuzz’s own tests use for the Graphite backend, `graphite2-expansion.ttf`. It is three glyphs and a `Silf` table, with no OpenType layout at all:
+It also means the presence of a table decides nothing unless its backend is compiled in. Here is the font HarfBuzz’s own tests use for the Graphite backend, `graphite2-expansion.ttf`. It is three glyphs and a `Silf` table, with no OpenType layout at all:
 
 ```info
 hb:test/api/fonts/graphite2-expansion.ttf  --list-tables
