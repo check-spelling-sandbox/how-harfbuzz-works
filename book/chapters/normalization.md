@@ -182,7 +182,7 @@ The same function handles **singleton** decompositions, where *b* is zero. U+212
 norm.ttf  \u2126  --no-positions
 ```
 
-A decomposition can also need a mark the font lacks. The font has no combining circumflex, so *ê* has nowhere to go, and nor does *ñ*, whose base the font lacks too:
+A decomposition can also need a mark the font lacks. The font has no combining circumflex, so *ê* has nowhere to go, and neither does *ñ*, whose base the font lacks too:
 
 ```shape
 norm.ttf  ê  --no-positions
