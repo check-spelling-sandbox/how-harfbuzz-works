@@ -72,7 +72,7 @@ Firefox keeps HarfBuzz in `gfx/harfbuzz`. Its [moz.yaml](https://github.com/mozi
 
 Android’s copy is `external/harfbuzz_ng`. In AOSP’s public main branch its [METADATA](https://android.googlesource.com/platform/external/harfbuzz_ng/+/refs/heads/main/METADATA) gives version 10.2.0, last upgraded in January 2025, and its [README.android](https://android.googlesource.com/platform/external/harfbuzz_ng/+/refs/heads/main/README.android) notes that “Chromium updates Harfbuzz more frequently”.
 
-The text layout library minikin calls it in [LayoutCore.cpp](https://android.googlesource.com/platform/frameworks/minikin/+/refs/heads/main/libs/minikin/LayoutCore.cpp). For each font it makes a sub-font, because “We override some functions which are not thread safe.” The funcs on it supply advances and origins from Skia, for a stated reason: “we can’t use HarfBuzz’s implemenation. It may return the wrong value if the font uses hinting aggressively.” Color bitmap fonts (those with `CBDT`) get funcs that keep HarfBuzz’s own advances, “for performance reasons”.
+The text layout library minikin calls it in [LayoutCore.cpp](https://android.googlesource.com/platform/frameworks/minikin/+/refs/heads/main/libs/minikin/LayoutCore.cpp). For each font it makes a sub-font, because “We override some functions which are not thread safe.” The funcs on it supply advances and origins from Skia, for a stated reason: “we can’t use HarfBuzz’s implementation. It may return the wrong value if the font uses hinting aggressively.” Color bitmap fonts (those with `CBDT`) get funcs that keep HarfBuzz’s own advances, “for performance reasons”.
 
 ### Pango and GNOME
 
