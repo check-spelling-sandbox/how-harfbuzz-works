@@ -23,7 +23,7 @@ for (unsigned i = start + 2; i < end; i++)
   unsigned c1 = info_cc (info[i - 1]);
   unsigned c2 = info_cc (info[i - 0]);
 
-  if ((c0 == CCC17 || c0 == CCC18) /* patach or qamats */ &&
+  if ((c0 == CCC17 || c0 == CCC18) /* patah or qamats */ &&
       (c1 == CCC10 || c1 == CCC14) /* sheva or hiriq */ &&
       (c2 == CCC22 || c2 == BELOW) /* meteg or below */)
   {
