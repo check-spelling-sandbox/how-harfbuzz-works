@@ -283,7 +283,7 @@ The contract allows a table to leave checks to the code that reads it, as long a
 bool sanitize (hb_sanitize_context_t *c HB_UNUSED) const
 {
   TRACE_SANITIZE (this);
-  /* Runtime checks as eager sanitizing each glyph is costy */
+  /* Runtime checks as eager sanitizing each glyph is costly */
   return_trace (true);
 }
 ```
