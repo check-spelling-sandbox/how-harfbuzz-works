@@ -217,7 +217,7 @@ Vertically, with a **gap** of a sixteenth of the font’s y scale, 62 units in a
 | 214 Attached_Above, 216 | just above the base |
 | every other class | where its outline puts it |
 
-Two corrections follow. A below mark is never moved up: if its outline is already low enough, it stays (`:288`). An above mark drawn higher than it needs to be is moved down only half way (`:310`): “Don’t shift down "above" marks too much.” `fallback.ttf` has its acute drawn from 550 to 700 units, its grave from 800 to 950, and its dot below from −100 to −200:
+Two corrections follow. A below mark is never moved up: if its outline is already low enough, it stays (`:288`). An above mark drawn higher than it needs to be is moved down only halfway (`:310`): “Don’t shift down "above" marks too much.” `fallback.ttf` has its acute drawn from 550 to 700 units, its grave from 800 to 950, and its dot below from −100 to −200:
 
 ```shape
 fallback.ttf  o\u0301  --language=en
@@ -279,7 +279,7 @@ fallback.ttf  \u05E9\u05C2  --language=he
 fallback.ttf  \u0628\u0651\u0650  --language=ar
 ```
 
-The dagesh keeps its class, so it is centered and left at its drawn height, inside the letter. The hiriq is centered below. The shin dot goes to the right, the sin dot to the left. The shadda goes above and the kasra below the beh, each against the beh’s own box, since their classes differ. Both the shadda and the fatha are drawn higher than they need to be, and are moved down only half way.
+The dagesh keeps its class, so it is centered and left at its drawn height, inside the letter. The hiriq is centered below. The shin dot goes to the right, the sin dot to the left. The shadda goes above and the kasra below the beh, each against the beh’s own box, since their classes differ. Both the shadda and the fatha are drawn higher than they need to be, and are moved down only halfway.
 
 ### What it doesn’t take into account
 

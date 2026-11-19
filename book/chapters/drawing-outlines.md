@@ -244,7 +244,7 @@ CFF2 also drops `endchar`: a charstring simply ends. HarfBuzz’s CFF2 interpret
 
 ### When a charstring fails
 
-Unlike a `glyf` glyph, a charstring is drawn as it is run. If it fails half-way, by overflowing the stack, calling a subroutine that doesn’t exist, or running out of budget, the part already drawn has reached the client by the time `hb_font_draw_glyph_or_fail` returns false.
+Unlike a `glyf` glyph, a charstring is drawn as it is run. If it fails halfway, by overflowing the stack, calling a subroutine that doesn’t exist, or running out of budget, the part already drawn has reached the client by the time `hb_font_draw_glyph_or_fail` returns false.
 
 A CFF (version 1) charstring that ends without `endchar` shows another side of this. Running off the end isn’t an error in CFF: the interpreter reads an invalid operator, ignores it, and carries on until it has counted 200,000 operators. In a test font made while writing this chapter, such a glyph was drawn, and then reported as a failure. Each one also used 200,000 units of the budget described next, so in `hb-vector` a line of about 80 of them used all of it, and the glyphs after them weren’t drawn. It is probably a bug, though only a malformed font can trigger it.
 
@@ -326,5 +326,5 @@ Thirty-two are drawn. The thirty-third runs the budget out, and from there on no
 * hb-ot draws from VARC, then `glyf`, then CFF2, then CFF. An empty `glyf` glyph still counts as drawn.
 * `glyf` points become curves through implied on-curve points between off-curve ones. Composites are transformed and flattened before anything is drawn; `ROUND_XY_TO_GRID` and the overlap flags are ignored. Point matching inside a nested composite counts points from the wrong place in 15.1.0.
 * Cubic `glyf` curves use flag bit 0x80, in pairs, and HarfBuzz reads the bit only in `GLYF`, not `glyf`.
-* CFF and CFF2 charstrings run in one templated interpreter that ignores hints, follows subroutines 10 deep, draws `seac` accents, and applies CFF2 blends unrounded. A charstring that fails half-way has already drawn part of its glyph.
+* CFF and CFF2 charstrings run in one templated interpreter that ignores hints, follows subroutines 10 deep, draws `seac` accents, and applies CFF2 blends unrounded. A charstring that fails halfway has already drawn part of its glyph.
 * Nesting, components, points and operators each have a limit, and since 14.5.0 a shared budget of 2²⁴ units bounds a whole drawing session, per glyph for most clients, and per output for HarfBuzz’s own renderers, like `hb-vector`. Those renderers are the subjects of [hb-raster](hb-raster.html), [hb-vector](hb-vector.html) and [hb-gpu](hb-gpu.html).
