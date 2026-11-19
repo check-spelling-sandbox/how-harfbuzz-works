@@ -76,7 +76,7 @@ So an advance is always a whole number of font units, even when the text is enor
 variations/var.ttf  I  --variations=wght=613  --font-size=100000
 ```
 
-The specification only recommends rounding as late as possible. Most of the time the difference is too small to see. But it means the spacing of very large text moves in steps of whole font units as a slider moves, and it means that HarfBuzz’s advances and positioning deltas aren’t rounded at the same stage.
+The specification only recommends rounding as late as possible. Most of the time, the difference is too small to see. But it means the spacing of very large text moves in steps of whole font units as a slider moves, and it means that HarfBuzz’s advances and positioning deltas aren’t rounded at the same stage.
 
 The addition itself is in floating point, too: the advance from `hmtx` plus the rounded delta. A float has 24 bits of precision, so for huge values the sum is inexact. A HarfBuzz test font with deltas of two billion shows it: an advance that should be 500,000,500 comes out as 500,000,512, and one that would overflow comes out as −1, which an API test now asserts.
 
