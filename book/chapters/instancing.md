@@ -196,7 +196,7 @@ Most other variation data lives in [item variation stores](deltas.html#item-vari
 
 * **HVAR and VVAR.** The new advances are already in `hmtx` and `vmtx`, from the outlines, so the gain is dropped.
 * **MVAR.** `OS/2`, `hhea`, `vhea` and `post` add each metric’s delta at the new default to the stored value.
-* **GDEF, GPOS and BASE.** The plan evaluates every variation index used by a kept value record or anchor, and makes a map from old index to (new index, delta) (`remap_variation_indices`, `hb-subset-plan-var.cc:384`). Each value is serialized with its delta added, and its device table pointed at the new index, or dropped when nothing varies any more.
+* **GDEF, GPOS and BASE.** The plan evaluates every variation index used by a kept value record or anchor, and makes a map from old index to (new index, delta) (`remap_variation_indices`, `hb-subset-plan-var.cc:384`). Each value is serialized with its delta added, and its device table pointed at the new index, or dropped when nothing varies anymore.
 * **COLR.** COLR v1’s variable paints get the same treatment through a map of their own.
 * **cvar.** `cvar` is rebased like `gvar`, and its gain is added to `cvt ` whenever the default moves (`hb-subset.cc:347`), for partial instances as well as full ones.
 

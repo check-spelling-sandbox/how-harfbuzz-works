@@ -244,7 +244,7 @@ The order in step 19 is the one the source comment insists on: “Has to follow 
 
 ### Into visual order
 
-Step 21: if the buffer’s direction is now backward, `hb_buffer_reverse` reverses the whole buffer. In practice that means right to left: a bottom-to-top run was turned top to bottom at step 5, so it isn’t backward any more, and is never reversed back. Its glyphs come out in top-to-bottom order ([Vertical text](vertical-text.html)). This is the only place HarfBuzz turns its output into visual order, and it is why `hb-shape` lists the parenthesis that was typed first last. The reversal is of glyphs, not graphemes: the fatha, typed after the beh, now comes before it, as it would be drawn in a left-to-right list. `glyph_props` and `lig_props` are given back.
+Step 21: if the buffer’s direction is now backward, `hb_buffer_reverse` reverses the whole buffer. In practice that means right to left: a bottom-to-top run was turned top to bottom at step 5, so it isn’t backward anymore, and is never reversed back. Its glyphs come out in top-to-bottom order ([Vertical text](vertical-text.html)). This is the only place HarfBuzz turns its output into visual order, and it is why `hb-shape` lists the parenthesis that was typed first last. The reversal is of glyphs, not graphemes: the fatha, typed after the beh, now comes before it, as it would be drawn in a left-to-right list. `glyph_props` and `lig_props` are given back.
 
 ## After positioning
 

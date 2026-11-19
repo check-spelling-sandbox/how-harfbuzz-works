@@ -71,7 +71,7 @@ Three things happen. The parent becomes immutable, so its bytes can no longer be
 
 A blob can be made writable: `hb_blob_get_data_writable` asks for it, and `try_make_writable` (`hb-blob.cc:473`) first tries `mprotect` on the pages, if the mode allows it, and otherwise copies the data into memory the blob owns. `hb_blob_copy_writable_or_fail` always copies.
 
-This used to matter. The sanitizer once repaired broken tables by editing them, and it needed writable bytes to do it. Since HarfBuzz 12.3 it repairs nothing (the [sanitizer chapter](trust-nothing-the-sanitizer.html) tells that story): a table either passes, and is made immutable, or is dropped. So nothing on the path from a font file to a shaped run writes to a blob any more, and the `mprotect` route is, in practice, unused: the file blob is made immutable as soon as a face is made from it, and `hb_blob_get_data_writable` refuses an immutable blob. The few places in the library that need writable bytes make a copy. `cvar`, for example, copies the `cvt` table with `hb_blob_copy_writable_or_fail` before applying its deltas to it (`hb-ot-var-cvar-table.hh:178`).
+This used to matter. The sanitizer once repaired broken tables by editing them, and it needed writable bytes to do it. Since HarfBuzz 12.3 it repairs nothing (the [sanitizer chapter](trust-nothing-the-sanitizer.html) tells that story): a table either passes, and is made immutable, or is dropped. So nothing on the path from a font file to a shaped run writes to a blob anymore, and the `mprotect` route is, in practice, unused: the file blob is made immutable as soon as a face is made from it, and `hb_blob_get_data_writable` refuses an immutable blob. The few places in the library that need writable bytes make a copy. `cvar`, for example, copies the `cvt` table with `hb_blob_copy_writable_or_fail` before applying its deltas to it (`hb-ot-var-cvar-table.hh:178`).
 
 ## Objects, references and user data
 
@@ -419,7 +419,7 @@ So the pattern HarfBuzz is built for is: one blob per file, one face per face in
 ## In short
 
 * A blob is bytes with a reference count and a destroy function. Font files are memory-mapped, and every table is a sub-blob of the file: nothing is copied.
-* Nothing writes to font data any more, so writable blobs, and the `mprotect` trick, are now rarely needed.
+* Nothing writes to font data anymore, so writable blobs, and the `mprotect` trick, are now rarely needed.
 * A face gets its tables only through `reference_table_func`. `hb_face_create` checks only the file’s container, and never fails; `hb_face_create_or_fail` does.
 * The low 16 bits of a face index pick a face in a collection. The high 16 bits, minus one, pick a named instance, which `hb_font_create` applies.
 * Each table a face uses has a one-pointer slot, filled on first use. Racing threads both build, one wins the compare-and-swap, and the other destroys its copy.

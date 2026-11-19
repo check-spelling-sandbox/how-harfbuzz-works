@@ -343,7 +343,7 @@ The soft hyphen is hidden, then drawn with the font’s own glyph, then gone. U+
 
 ### Substituted, so no longer ignorable
 
-A default ignorable that GSUB has substituted is not default ignorable any more. The test is in `_hb_glyph_info_is_default_ignorable` itself (`hb-ot-layout.hh:349`):
+A default ignorable that GSUB has substituted is not default ignorable anymore. The test is in `_hb_glyph_info_is_default_ignorable` itself (`hb-ot-layout.hh:349`):
 
 ```c++
   return (info->unicode_props() & UPROPS_MASK_IGNORABLE) &&
