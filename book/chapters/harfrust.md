@@ -220,7 +220,7 @@ Every line of every `shape` block in this book, 913 in all, was run through Harf
 | an option the backend doesn’t pass on | 6 |
 | real divergences | 9 |
 
-None of the differences is lag any more. With HarfBuzz 15.1.0, whose backend built HarfRust 0.15.0, four lines were HarfRust one release behind; with the backend and HarfRust in step, there are none. The six options are the invisible glyph, ppem, and synthetic slant (see [above](#the-harfrust-backend-in-harfbuzz)). The not-found glyph now reaches HarfRust, and synthetic bold always did, so those lines are identical.
+None of the differences is lag anymore. With HarfBuzz 15.1.0, whose backend built HarfRust 0.15.0, four lines were HarfRust one release behind; with the backend and HarfRust in step, there are none. The six options are the invisible glyph, ppem, and synthetic slant (see [above](#the-harfrust-backend-in-harfbuzz)). The not-found glyph now reaches HarfRust, and synthetic bold always did, so those lines are identical.
 
 The nine real divergences are fewer than in the same comparison with 15.1.0 and HarfRust 0.16.0. Two AAT bugs in HarfRust are fixed in 0.16.1: `smcp[1:2]` on “aaa” in a `morx` font made none of the *a*s small, because HarfRust looked up each glyph’s feature range by the cluster of the glyph at the buffer’s cursor, not the glyph’s own; and a `kerx` format 4 control-point action that can’t find its points attached the mark at its base’s origin, where HarfBuzz attaches nothing. One malformed font now agrees from HarfBuzz’s side: a null coverage offset no longer exhausts {{hb}}’s sanitizer budget ([Fonts as bytes](fonts-as-bytes.html)), so HarfBuzz keeps the table and applies the other lookups, as HarfRust did. What is left:
 
