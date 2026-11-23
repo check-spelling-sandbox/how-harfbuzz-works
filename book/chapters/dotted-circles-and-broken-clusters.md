@@ -342,7 +342,7 @@ In `bare.ttf`, which has no GDEF, the circle between A and the vowel sign keeps 
 
 ### Only adjacent characters
 
-The match is on characters next to each other in the buffer, except that default ignorables between them are passed over (`_vowel_constraint_glyph`, `:24`). A ZWJ, which the Indic grammar allows inside a syllable, doesn’t hide the sequence, and nor does CGJ, which ends the syllable:
+The match is on characters next to each other in the buffer, except that default ignorables between them are passed over (`_vowel_constraint_glyph`, `:24`). A ZWJ, which the Indic grammar allows inside a syllable, doesn’t hide the sequence, nor does CGJ, which ends the syllable:
 
 ```shape
 circle.ttf  अ\u200D\u093E  --language=hi
