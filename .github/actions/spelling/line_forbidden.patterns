@@ -114,8 +114,8 @@
 # Should be `a priori` or `and prior`
 (?i)(?<!posteriori)\sand priori\s
 
-# Should be `a`
-\san (?=(?:[b-dgjkpqtvwz]|f(?!f|d\b)|h(?!onest|onou?r|our|s[lv]|tml|ttp|ref)|l(?!cov)|n(?!ginx|grok|pm)|r(?!c)|s(?!s[ho]|log|vg))[a-z]|x(?!\b|[-\d]|ml))
+# Should be `a ...`
+#\san (?:(?:[b-dgjkpqtvwz]|f(?!f|d\b)|h(?!onest|onou?r|our|s[lv]|tml|ttp|ref)|l(?!cov)|n(?!ginx|grok|pm)|r(?!c)|s(?!s[ho]|log|vg))[a-z]|x(?!\b|[-\d]|ml)\w*)
 
 # Articles generally shouldn't be used without a noun and a verb
 # - Perhaps you're missing a verb between the noun and the second article.
@@ -173,8 +173,8 @@
 # Should be `an`
 (?<!(?:\b[Ii]|and|but|Frankfurt|git|\W) )(?<![-.])(?<!\d\s?)\bam\b(?!/pm|[-:")]| I\b)
 
-# Should be `an`
-#(?<=\s)(?<!\.notdef )a(?= (?:a(?!nd\s|s\s)|e(?!u| \w\b)|i(?![ns]\s)|o(?!f\b|nc?e)|u(?!\d|biquitous|int|kr|n[ai]|r[ael]|ri\b|s[aeiu]|tf\d*|til|topia|uid|vula|v\b)|y(?!aml|arn|e|ie|oga|oung|y|-|\b)))
+# Should be `an ...`
+#(?<=\s)(?<!\.notdef )a(?: (?:a(?!nd\s|s\s)|e(?!u| \w\b)|i(?![ns]\s)|o(?!f\b|nc?e)|u(?!\d|biquitous|int|kr|n[ai]|r[ael]|ri\b|s[aeiu]|tf\d*|til|topia|uid|vula|v\b)|y(?!aml|arn|e|ie|oga|oung|y|-|\b))\w*)
 
 # Should be `anymore`
 \bany more[,.]
