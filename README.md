@@ -1,5 +1,6 @@
 # How HarfBuzz Works
 
+
 *From Unicode to positioned glyphs, and everything in between*
 
 Read it [online](https://lorp.github.io/how-harfbuzz-works/) or as a [PDF](https://lorp.github.io/how-harfbuzz-works/print/how-harfbuzz-works.pdf).
